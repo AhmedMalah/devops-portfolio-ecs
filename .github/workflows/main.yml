@@ -27,8 +27,14 @@ jobs:
     - name: Build Docker image
       run: docker build -t devops-portfolio .
 
+    - name: Debug Docker images
+      run: docker images
+
     - name: Tag Docker image
       run: docker tag devops-portfolio:latest 622483791730.dkr.ecr.eu-north-1.amazonaws.com/devops-portfolio:latest
+
+    - name: Debug tagged image
+      run: docker image inspect 622483791730.dkr.ecr.eu-north-1.amazonaws.com/devops-portfolio:latest
 
     - name: Push Docker image to ECR
       run: docker push 622483791730.dkr.ecr.eu-north-1.amazonaws.com/devops-portfolio:latest
